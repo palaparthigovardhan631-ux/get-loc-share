@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Kinvoke — Aged parchment & ink design system.
+ * All color values use oklch. Never hardcode hex/tailwind color utilities
+ * in components — use semantic tokens defined here.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ink: var(--ink);
+  --color-parchment: var(--parchment);
+  --color-parchment-deep: var(--parchment-deep);
+  --color-gilt: var(--gilt);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Aged parchment palette */
+  --parchment: oklch(0.95 0.028 84);      /* #f5ecd7 primary bg */
+  --parchment-deep: oklch(0.905 0.035 82); /* #e8dcc0 elevated bg */
+  --ink: oklch(0.28 0.024 62);             /* #3b2f1e text */
+  --gilt: oklch(0.56 0.086 68);            /* #8b6b3d accent */
+
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: oklch(0.965 0.02 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.965 0.02 85);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--parchment);
+  --secondary: var(--parchment-deep);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.9 0.03 82);
+  --muted-foreground: oklch(0.42 0.028 66);
+  --accent: var(--gilt);
+  --accent-foreground: var(--parchment);
+  --destructive: oklch(0.5 0.16 25);
+  --destructive-foreground: var(--parchment);
+  --border: oklch(0.82 0.04 78);
+  --input: oklch(0.87 0.035 80);
+  --ring: var(--gilt);
+}
+
+.dark {
+  --parchment: oklch(0.2 0.018 60);
+  --parchment-deep: oklch(0.26 0.02 62);
+  --ink: oklch(0.9 0.025 82);
+  --gilt: oklch(0.72 0.1 72);
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: var(--parchment-deep);
+  --card-foreground: var(--ink);
+  --popover: var(--parchment-deep);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--parchment);
+  --secondary: oklch(0.3 0.02 62);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.27 0.02 62);
+  --muted-foreground: oklch(0.68 0.03 78);
+  --accent: var(--gilt);
+  --accent-foreground: var(--parchment);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--parchment);
+  --border: oklch(0.35 0.02 62);
+  --input: oklch(0.32 0.02 62);
+  --ring: var(--gilt);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(1200px 600px at 15% -10%, oklch(0.98 0.02 85 / 0.6), transparent 60%),
+      radial-gradient(900px 500px at 90% 110%, oklch(0.86 0.05 70 / 0.35), transparent 65%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility parchment-panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.4) inset,
+    0 20px 40px -30px oklch(0.3 0.05 60 / 0.35);
+}

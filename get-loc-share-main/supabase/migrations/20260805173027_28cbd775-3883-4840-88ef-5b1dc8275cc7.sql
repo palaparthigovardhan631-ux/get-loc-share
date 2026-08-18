@@ -1,0 +1,1 @@
+ALTER TABLE public.ancestor_profiles ADD COLUMN IF NOT EXISTS perceived_gender text;
